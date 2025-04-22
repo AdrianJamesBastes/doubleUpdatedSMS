@@ -15,6 +15,12 @@ namespace SMS.Infastructure.Data
             base.OnConfiguring(optionsBuilder);
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            AppDbSeed.SeedUsers(builder);
+            base.OnModelCreating(builder); 
+        }
+
         public DbSet<Student> Students { get; set; }
         public DbSet<Programs> Programs { get; set; }
     }
